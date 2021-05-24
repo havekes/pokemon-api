@@ -1,0 +1,12 @@
+{
+  "python.pythonPath": ".venv/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint_django",
+    "--django-settings-module",
+    "pokemon.settings"
+  ],
+  "editor.tabSize": 4
+}
