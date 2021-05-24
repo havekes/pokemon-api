@@ -35,3 +35,10 @@ pip install tox
 # Tox will create the testing environment automatically
 tox
 ```
+
+## Exporting
+
+Pokemons can be exported to the original csv format using this Django admin command
+```bash
+python manage.py export_pokemons [dest_path]
+```

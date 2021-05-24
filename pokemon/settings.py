@@ -114,3 +114,4 @@ REST_FRAMEWORK = {
 # Application constants
 
 POKEMON_CSV = os.path.join(BASE_DIR, 'pokemon.csv')
+POKEMON_EXPORT_CSV = os.path.join(BASE_DIR, 'pokemon_export.csv')

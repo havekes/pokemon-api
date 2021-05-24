@@ -1,11 +1,15 @@
 # pylint: disable=missing-function-docstring
 
+import os
+import csv
+from io import StringIO
+from django.core.management import call_command
 from rest_framework import status
 from rest_framework.test import APITestCase
 from pokemons.models import Pokemon
 
 
-class PokemonsGetTest(APITestCase):
+class PokemonsTest(APITestCase):
     """CRUD pokemons API endpoint"""
 
     ENDPOINT = "/pokemons"
@@ -128,3 +132,16 @@ class PokemonsGetTest(APITestCase):
         response = self.client.delete(f'{self.ENDPOINT}/9999/')
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_command_export(self):
+        file_name = 'test.csv'
+        length = Pokemon.objects.count()
+        out = StringIO()
+        call_command('export_pokemons', file_name, stdout=out)
+
+        with open(file_name) as csvfile:
+            reader = csv.reader(csvfile)
+            self.assertIn(str(length), out.getvalue())
+            self.assertEqual(sum(1 for row in reader), length)
+
+        os.remove(file_name)
