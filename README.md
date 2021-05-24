@@ -1,5 +1,8 @@
 # pokemon-api
 
+Exposes pokemons from a csv file as a CRUD API.
+Changes that are made to the database can be exported back to csv.
+
 ## Get started
 
 You must have Python 3.9 installed and the `virtualenv` package.
@@ -9,7 +12,7 @@ To start working on the project:
 ```bash
 # Create a new virtualenv
 virtualenv .venv
-# Active the virtualenv
+# Activate the virtualenv
 source .venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
